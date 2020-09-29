@@ -3,7 +3,7 @@
     <b-card
       border-variant="primary"
       header="Job Here"
-      title="Title Here"
+      :title="title"
       header-text-variant="primary"
       style="max-width: 12rem;"
       class="m-2"
@@ -19,7 +19,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: String,
+    company: String
+  }
+};
 </script>
 
 <style></style>

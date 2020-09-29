@@ -43,9 +43,11 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      this.fetchData();
+      console.log("position: ", this.position);
+      console.log("location: ", this.location);
       this.position = "";
       this.location = "";
-      this.fetchData();
     },
     async fetchData() {
       try {
@@ -53,7 +55,13 @@ export default {
           `${process.env.BASE_URL}/us/${process.env.BASE_PARAMS}&app_id=${process.env.VUE_APP_ID}&app_key=${process.env.VUE_APP_KEY}&what=${this.position}&where=${this.location}`
         );
 
-        console.log("res.data: ", res.data);
+        // console.log("base url: ", process.env.BASE_URL);
+        // console.log("base params: ", process.env.BASE_PARAMS);
+        // console.log("vue app id: ", process.env.VUE_APP_ID);
+        // console.log("vue app key: ", process.env.VUE_APP_KEY);
+
+        this.jobs = res.data.results;
+        console.log("jobs: ", this.jobs);
       } catch (error) {
         console.log(error);
       }

@@ -40,8 +40,9 @@ export default {
   env: {
     VUE_APP_ID: "972ed168",
     VUE_APP_KEY: "6acc63fbb70fca920921fb546c67055f",
-    BASE_URL: "https://api.adzuna.com/v1/api/jobs",
-    BASE_PARAMS: "search/1?&results_per_page=20&content-type=application/json"
+    BASE_URL: "http://api.adzuna.com/v1/api/jobs",
+    // BASE_PARAMS: "search/1?&results_per_page=20&content-type=application/json"
+    BASE_PARAMS: "search/1?content-type=application/json"
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
