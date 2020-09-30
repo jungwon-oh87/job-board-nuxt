@@ -2,15 +2,16 @@
   <div>
     <b-card
       border-variant="primary"
-      header="Job Here"
-      :title="title"
+      header="Header"
+      :titleProp="this.jobTitle"
+      :companyProp="company"
       header-text-variant="primary"
       style="max-width: 12rem;"
       class="m-2"
     >
-      <b-card-text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+      <!-- <b-card-title class="text-truncate">{{ this.jobTitle }}</b-card-title> -->
+      <b-card-text class="mt-3">
+        Company name: <strong>{{ this.company }}</strong>
       </b-card-text>
 
       <b-button href="#" variant="primary">See details</b-button>
@@ -21,8 +22,19 @@
 <script>
 export default {
   props: {
-    title: String,
-    company: String
+    titleProp: String,
+    companyProp: String
+  },
+  computed: {
+    titleText() {
+      return this.jobTitle;
+    }
+  },
+  data() {
+    return {
+      company: this.companyProp,
+      jobTitle: this.titleProp
+    };
   }
 };
 </script>
