@@ -38,9 +38,15 @@ export default {
   ],
 
   env: {
+    /* FOR ADZUNA API */
     VUE_APP_ID: "972ed168",
     VUE_APP_KEY: "6acc63fbb70fca920921fb546c67055f",
     BASE_URL: "http://api.adzuna.com/v1/api/jobs",
+
+    /*INDEED API */
+    // BASE_URL: "https://api.indeed.com/ads/apisearch",
+    // CLIENT_ID: "20ad6e3b9ec2c54711223d748119fa03af8aa6a39c2748001f4126b755621695",
+
     // BASE_PARAMS: "search/1?&results_per_page=20&content-type=application/json"
     BASE_PARAMS: "search/1?content-type=application/json"
   },

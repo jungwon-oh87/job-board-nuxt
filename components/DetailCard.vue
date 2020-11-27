@@ -2,9 +2,7 @@
   <!-- <b-card :titleProp="this.title"> -->
   <b-card>
     <template v-slot:header>
-      {{ titleProp }}
-      <!-- {{ this.titleProp }} -->
-      <!-- <h4>{{ this.title }}</h4> -->
+      {{ job.title }}
     </template>
     <b-card-text>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, deleniti
@@ -16,20 +14,30 @@
 </template>
 
 <script>
-export default {
-  props: ["titleProp"],
-  data() {
-    // console.log("title: ", this.props.titleProp);
-    return {
-      title: this.titleProp,
-    };
+import Vue from "vue";
+export default Vue.extend({
+  name: "DetailCard",
+  props: {
+    job: Object,
+  },
+  // data() {
+  // console.log("title: ", this.props.titleProp);
+  // return {
+  //   title: this.titleProp,
+  // };
+  // },
+  created() {
+    console.log("in created, props:  ", this.job);
+  },
+  mounted() {
+    console.log("in mounted, props:  ", this.job);
   },
   //   watch: {
   //     titleProp: function (newOne) {
   //       this.title = newOne;
   //     },
   //   },
-};
+});
 </script>
 
 <style>
