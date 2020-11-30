@@ -1,16 +1,18 @@
 <template>
-  <!-- <b-card :titleProp="this.title"> -->
-  <b-card>
-    <template v-slot:header>
-      {{ job.title }}
-    </template>
-    <b-card-text>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, deleniti
-      id. Tempora quis tempore illo qui itaque natus fugit molestias
-      perspiciatis quam. Cum natus officia similique fugit! Natus, possimus
-      cumque!
-    </b-card-text>
-  </b-card>
+  <div class="container">
+    <b-card>
+      <template v-slot:header>
+        {{ cleanText(jobs[index].title) }}
+      </template>
+      <b-card-body>
+        Category: {{ jobs[index].category.label }}<br />
+        Type: {{ jobs[index].contract_time }}<br />
+        Location: {{ jobs[index].location.display_name }} <br />
+        <hr />
+        <p>Description: {{ cleanText(jobs[index].description) }}</p>
+      </b-card-body>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -18,27 +20,21 @@ import Vue from "vue";
 export default Vue.extend({
   name: "DetailCard",
   props: {
-    job: Object,
+    jobs: Array,
+    index: Number,
   },
-  // data() {
-  // console.log("title: ", this.props.titleProp);
-  // return {
-  //   title: this.titleProp,
-  // };
-  // },
-  created() {
-    console.log("in created, props:  ", this.job);
+  methods: {
+    cleanText(input) {
+      const newText = input.replace(/<\/?[^>]+(>|$)/g, "");
+      return newText;
+    },
   },
-  mounted() {
-    console.log("in mounted, props:  ", this.job);
-  },
-  //   watch: {
-  //     titleProp: function (newOne) {
-  //       this.title = newOne;
-  //     },
-  //   },
 });
 </script>
 
-<style>
+<style scoped>
+.container {
+  /* border: 1px solid blue; */
+  width: 100%;
+}
 </style>

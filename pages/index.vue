@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="index-container">
     <b-form class="w-25" @submit="onSubmit">
       <b-form-group label="Key word:">
         <b-form-input
@@ -19,25 +19,17 @@
     </b-form>
     <b-container>
       <cards-container v-if="this.jobs.length > 0" :jobs="this.jobs" />
-      <!-- <card
-        v-for="job in jobs"
-        :key="job.id"
-        :titleProp="job.title"
-        :companyProp="job.company.display_name"
-        v-on:click.native="cardClicked"
-      /> -->
     </b-container>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import axios from "axios";
 import CardsContainer from "@/components/CardsContainer.vue";
-// import Card from "~/components/Card.vue";
 
-export default {
+export default Vue.extend({
   components: {
-    // Card,
     CardsContainer,
   },
   data() {
@@ -80,18 +72,18 @@ export default {
       console.log("card clicked");
     },
   },
-};
+});
 </script>
 
-<style>
-.container {
+<style scoped>
+.index-container {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
-  /* text-align: center; */
+  /* border: 1px solid red; */
+  /* background-color: greenyellow; */
 }
 </style>

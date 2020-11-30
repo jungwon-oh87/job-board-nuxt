@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div class="card-container">
     <b-card
       border-variant="primary"
       :titleProp="this.jobTitle"
       :companyProp="company"
       header-text-variant="primary"
-      style="width: 100%"
-      class="m-2"
+      class="mb-2 p-0"
     >
       <a class="stretched-link" style="color: black; cursor: pointer">
         <h3 class="text-truncate">
@@ -19,8 +18,6 @@
       >
         {{ this.company }}
       </b-card-text>
-
-      <!-- <b-button size="sm" variant="primary">Apply</b-button> -->
     </b-card>
   </div>
 </template>
@@ -49,4 +46,8 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style scoped>
+.card-container {
+  width: 100%;
+}
+</style>

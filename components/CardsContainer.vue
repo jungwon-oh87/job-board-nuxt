@@ -1,16 +1,15 @@
 <template>
-  <div class="card-container">
-    <div class="card-brief">
+  <div class="cards-container">
+    <div class="cards-list">
       <card
-        v-for="job in jobs"
+        v-for="(job, idx) in jobs"
         :key="job.id"
         :titleProp="job.title"
         :companyProp="job.company.display_name"
-        @click.native="clickCard(job)"
+        @click.native="clickCard(idx)"
       />
     </div>
-    <!-- <detail-card :job="jobs" ref="detailCard"/> -->
-    <div class="detail" ref="detail">{{ jobs[0].title }}</div>
+    <detail-card :jobs="jobs" :index="cardIndex" />
   </div>
 </template>
 
@@ -21,6 +20,11 @@ import DetailCard from "~/components/DetailCard.vue";
 
 export default Vue.extend({
   name: "CardsContainer",
+  data() {
+    return {
+      cardIndex: 0,
+    };
+  },
   components: {
     Card,
     DetailCard,
@@ -29,20 +33,21 @@ export default Vue.extend({
     jobs: Array,
   },
   methods: {
-    clickCard(job) {
-      this.$refs["detail"].innerText = job.title;
-      // this.$refs["detailCard"]
+    clickCard(index) {
+      this.cardIndex = index;
     },
   },
 });
 </script>
 
 <style scoped>
-.card-container {
+.cards-container {
   display: flex;
+  overflow: hidden;
+  /* border: 1px solid red; */
 }
-.detail {
-  width: 100px;
-  border: 1px solid red;
+.cards-list {
+  width: 50%;
+  /* border: 1px solid red; */
 }
 </style>
